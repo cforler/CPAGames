@@ -34,23 +34,30 @@ public class RandomPermutation4 extends BlockCipher {
     /******************************************************/
 
     private long getFreshCiphertext(long p) {
-        p = (p%4)+4;
-        p %= 4;
-	long c = random.nextLong()%4;
-        c = (c%4)+4;
+        p = normalize(p);
+	long c = normalize(random.nextLong());
 	while( B.containsValue(c) )
-	    c = random.nextLong();
-	B.put(p,c);
+	    c = normalize(random.nextLong());
+        B.put(p,c);
 	return c;
     }
 
+
+    /******************************************************/
+    
     private long getFreshPlaintext(long c) {
-        c = c%4;
-	long p = (random.nextLong()%4)+4;
-        p %= 4;
+        c = normalize(c);
+	long p = normalize(random.nextLong());
 	while( B.containsKey(p) )
-	    p = random.nextLong();
+	    p = normalize(random.nextLong());
 	B.put(p,c);
 	return p;
     }
+
+    /******************************************************/
+
+    private static long normalize(long l) { return ((l%4)+4)%4; }
+
+    /******************************************************/
 }
+
