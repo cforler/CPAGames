@@ -35,8 +35,11 @@ public class CPAGame {
 			bc.rekey(random.nextLong());
 			guess = adversary.runAndGuess(bc);
 		    }
-		else
-		   guess = adversary.runAndGuess(p);
+		else {
+                    
+                    p.rekey(0);
+                    guess = adversary.runAndGuess(p);
+                }
 
 		if(guess == real) result+=1;
 	    }
@@ -45,13 +48,19 @@ public class CPAGame {
     public boolean hasWon() {
 	return (result > THRESHOLD);
     }
+    
+    public int getResult() {
+        return result;
+    }
+    
 
 
     public void printResult() {
-	System.out.print("The score of your adversary is " + result + "/" + NUMBER_OF_ROUNDS+". ");
+	System.out.print("The score of the adversary is " + result + "/" +
+			   NUMBER_OF_ROUNDS+". ");
 	if(hasWon())
 	    System.out.println("Congratulations! You won!\nYour adversary was able to distinguish the given block cipher from a random permutation. :-)");
 	else
-	    System.out.println("You lose!\nYour adversary was NOT able to distinguish the given block cipher from a random permutation. :-(");
+	    System.out.println("You lose!\nYour adversary was NOT able to distinguish the given block cipher from a random permutation :-(.");
     }
 }
