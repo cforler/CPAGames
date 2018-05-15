@@ -18,11 +18,14 @@ müsst Ihr euren Angreifer noch einmal überarbeiten.
 
 
 
-## Beispielhaftes Vorgehen für E1.
+## Beispielhaftes Vorgehen für die unsichre Blockchiffre E1
 
 * Die Implementation der Blockchiffre (`E1.java`) studieren.
 * Die Methode `runAndGuess()` für den Angreifer `E1Adversary.java` implementieren.
 * Das Programm `TestE1.java` ausführen um zu testen ob dein Angreifer erfolgreich ist.
 * Ggf. den Angreifer so lange verbessern bis er den Test besteht.
 
+
+Viel Spaß am Gerät,
+Christian Forler
 
